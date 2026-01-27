@@ -9,6 +9,20 @@ const prompt = promptSync();
 // jako parametr.
 
 function obratPole(texty : string[]) : string[] {
+    
+    let index : number = 0
+    let index2 : number = 0
+    let pomocna : string = ""
+    let pomocna2 : string = ""
+
+    for(index = 0; index < Math.floor((texty.length)/ 2);index++ ) {
+        for(index2 = texty.length; index < Math.floor((texty.length)/ 2); index2--){
+            pomocna = texty[index]
+            pomocna2 = texty[index2]
+            texty[index] = pomocna2
+            texty[index2] = pomocna
+        }
+    }
     return []; // Nahradit skutecnym vysledkem
 }
 
@@ -29,6 +43,20 @@ function testObratPole() {
 // v poli, ktere funkce dostane jako parametr.
 
 function obratPole2(texty : string[]) {
+    
+    let index : number = 0
+    let index2 : number = 0
+    let pomocna : string = ""
+    let pomocna2 : string = ""
+
+    for(index = 0; index < Math.floor((texty.length)/ 2);index++ ) {
+        for(index2 = texty.length; index < Math.floor((texty.length)/ 2); index2--){
+            pomocna = texty[index]
+            pomocna2 = texty[index2]
+            texty[index] = pomocna2
+            texty[index2] = pomocna
+        }
+    }
     return []; // Nahradit skutecnym vysledkem
 }
 
@@ -64,6 +92,9 @@ function testObratPole2() {
  * @returns odstranene texty; texty odstranene ze zacatku puvodniho "texty" museji byt na zacatku vysledku. 
  */
 function vezmiAPridej(texty : string[], zeZacatku : number, zKonce : number, pridejNaZacatek: string[], pridejNaKonec: string[]) : string[] {
+    let pomocna : number = texty.length - zKonce - 1
+    texty[zeZacatku] = pridejNaZacatek[0]
+    texty[pomocna] = pridejNaKonec[0]
     return []; // NAHRADIT skutecnym vysledkem !
 }
 
