@@ -10,21 +10,22 @@ const prompt = promptSync();
 
 function obratPole(texty : string[]) : string[] {
     
-    let index : number = 0
-    let index2 : number = 0
-    let pomocna : string = ""
-    let pomocna2 : string = ""
+    //let index : number = 0
+    
+    let pole2 : string[] = []
+    let pomocna2 : number = texty.length
+    //let pomocna2 : string = ""
 
-    for(index = 0; index < Math.floor((texty.length)/ 2);index++ ) {
-        for(index2 = texty.length; index < Math.floor((texty.length)/ 2); index2--){
-            pomocna = texty[index]
-            pomocna2 = texty[index2]
-            texty[index] = pomocna2
-            texty[index2] = pomocna
-        }
+    for(let index : number = 0; index < pomocna2; index++) {
+        let pomocna : string = texty.pop() as string
+        pole2.push(pomocna)
     }
-    return []; // Nahradit skutecnym vysledkem
+    return pole2; // Nahradit skutecnym vysledkem
 }
+
+
+//testObratPole()
+// test hotov, vysledek : funkcni
 
 function testObratPole() {
     console.log(obratPole(["alfa", "beta", "gama", "delta"]));
@@ -38,27 +39,58 @@ function testObratPole() {
 
 }
 
+
+
 // ULOHA O12:
 // Napiste funkci, ktera obraci poradi prvku v poli. POZOR - smite pouze prehazovat prvky
 // v poli, ktere funkce dostane jako parametr.
 
-function obratPole2(texty : string[]) {
-    
-    let index : number = 0
-    let index2 : number = 0
-    let pomocna : string = ""
-    let pomocna2 : string = ""
+function obratPole2(texty : string[]) : string[] {
 
-    for(index = 0; index < Math.floor((texty.length)/ 2);index++ ) {
-        for(index2 = texty.length; index < Math.floor((texty.length)/ 2); index2--){
-            pomocna = texty[index]
-            pomocna2 = texty[index2]
-            texty[index] = pomocna2
-            texty[index2] = pomocna
-        }
+    let index2 : number = texty.length - 1
+    let pomocna2 : number = Math.floor((texty.length / 2))
+
+
+    for ( let index : number = 0; index < pomocna2; index++) {
+        
+        let pomocna : string =  texty[index]
+        texty[index] = texty[index2]
+        texty[index2] = pomocna
+        index--
     }
-    return []; // Nahradit skutecnym vysledkem
+    
+    //  nebo : 
+    //  texty.reverse
+    //  :D
+    
+    //let index : number = 0
+    //let index2 : number = texty.length
+    //let pomocna : string = ""
+    //let pomocna2 : string = ""
+
+    //for(index = 0; index < Math.floor(texty.length / 2); index ++ ){
+    //    pomocna = texty[index]
+    //pomocna2 = texty[index2]
+    //texty.push(pomocna2)
+    //texty.unshift(pomocna)
+    //index2 --
+    
+    
+    //for(index = 0; index < Math.floor((texty.length)/ 2);index++ ) {
+    //  for(index2 = texty.length; index < Math.floor((texty.length)/ 2); index2--){
+    //      pomocna = texty[index]
+    //      pomocna2 = texty[index2]
+            //texty[index] = pomocna2
+            //texty[index2] = pomocna
+    //  }
+    //}
+    return texty; // Nahradit skutecnym vysledkem
 }
+
+//testObratPole2()
+// test hotov, vysledek : funkcni
+
+
 
 function testObratPole2() {
 // Testovaci data pro overeni, ze se pole obraci spravne.
@@ -67,6 +99,7 @@ function testObratPole2() {
     console.log(pole);
 
     pole = ["alfa", "beta", "epsilon", "gama", "delta"];
+    obratPole2(pole);
     console.log(pole);
 
     pole = ["jedinacek"];
