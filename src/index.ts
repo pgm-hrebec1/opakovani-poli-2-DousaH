@@ -14,8 +14,6 @@ function obratPole(texty : string[]) : string[] {
     
     let pole2 : string[] = []
     let pomocna2 : number = texty.length
-    //let pomocna2 : string = ""
-
     for(let index : number = 0; index < pomocna2; index++) {
         let pomocna : string = texty.pop() as string
         pole2.push(pomocna)
@@ -59,9 +57,8 @@ function obratPole2(texty : string[]) : string[] {
         index--
     }
     
-    //  nebo : 
-    //  texty.reverse
-    //  :D
+    
+
     
     //let index : number = 0
     //let index2 : number = texty.length
@@ -125,11 +122,18 @@ function testObratPole2() {
  * @returns odstranene texty; texty odstranene ze zacatku puvodniho "texty" museji byt na zacatku vysledku. 
  */
 function vezmiAPridej(texty : string[], zeZacatku : number, zKonce : number, pridejNaZacatek: string[], pridejNaKonec: string[]) : string[] {
-    let pomocna : number = texty.length - zKonce - 1
-    texty[zeZacatku] = pridejNaZacatek[0]
-    texty[pomocna] = pridejNaKonec[0]
-    return []; // NAHRADIT skutecnym vysledkem !
+    //let pomocna : number = texty.length - zKonce - 1
+    //texty[zeZacatku] = pridejNaZacatek[0]
+   // texty[pomocna] = pridejNaKonec[0]
+    
+    let splice1 : string[] = texty.splice(0,zeZacatku,...pridejNaZacatek)
+    let splice2 : string[] = texty.splice(texty.length - zKonce,zKonce,...pridejNaKonec)
+    return texty; // NAHRADIT skutecnym vysledkem !
 }
+
+testVezmiApridej()
+//
+
 
 function testVezmiApridej() {
     let pole : string[] = [ "pasla", "ovecky", "v", "zelenem", "hajecku"];
@@ -169,9 +173,23 @@ function testVezmiApridej() {
  * @returns odstranene prvky.
  */
 function vymenKusPole(vstup : string[], odstranitOd: string, smazatPo: string, novePrvky: string[]) : string[] {
-    return []; // NAHRADIT skutecnym vysledkem
-}
+    
+    let odstranitPo : string = smazatPo
+    
+    let odstranitod : number = vstup.indexOf(odstranitOd)
+    let odstranitpo : number = vstup.indexOf(odstranitPo)
+    if(odstranitod || odstranitpo === -1) {
+        console.log("spatne zadani, error 404")
+    }else{
+    let splice : string[] = vstup.splice(odstranitod, odstranitpo,...novePrvky)
+    let vystup : string[] = vstup
 
+    return vystup; // NAHRADIT skutecnym vysledkem
+    }
+}
+//kde je tento prvek : indexof (chekmark)
+//kdyz -1 z indexof : chyba a kdyz hledani neceho co neni : chyba (chekmark)
+//vyresit to se string[] co je podtrhlý (nevím)
 function testVymenKusPole() {
     let pole : string[];
     let odstraneno : string[];
