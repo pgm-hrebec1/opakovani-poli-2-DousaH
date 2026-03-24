@@ -179,12 +179,12 @@ function vymenKusPole(vstup : string[], odstranitOd: string, smazatPo: string, n
     let odstranitod : number = vstup.indexOf(odstranitOd)
     let odstranitpo : number = vstup.indexOf(odstranitPo)
     if(odstranitod || odstranitpo === -1) {
-        console.log("spatne zadani, error 404")
+        return []
     }else{
-    let splice : string[] = vstup.splice(odstranitod, odstranitpo,...novePrvky)
-    let vystup : string[] = vstup
+        let splice : string[] = vstup.splice(odstranitod, odstranitpo,...novePrvky)
+        let vystup : string[] = vstup
 
-    return vystup; // NAHRADIT skutecnym vysledkem
+        return vystup; // NAHRADIT skutecnym vysledkem
     }
 }
 //kde je tento prvek : indexof (chekmark)
