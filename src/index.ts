@@ -9,8 +9,21 @@ const prompt = promptSync();
 // jako parametr.
 
 function obratPole(texty : string[]) : string[] {
-    return []; // Nahradit skutecnym vysledkem
+    
+    //let index : number = 0
+    
+    let pole2 : string[] = []
+    let pomocna2 : number = texty.length
+    for(let index : number = 0; index < pomocna2; index++) {
+        let pomocna : string = texty.pop() as string
+        pole2.push(pomocna)
+    }
+    return pole2; // Nahradit skutecnym vysledkem
 }
+
+
+//testObratPole()
+// test hotov, vysledek : funkcni
 
 function testObratPole() {
     console.log(obratPole(["alfa", "beta", "gama", "delta"]));
@@ -24,13 +37,57 @@ function testObratPole() {
 
 }
 
+
+
 // ULOHA O12:
 // Napiste funkci, ktera obraci poradi prvku v poli. POZOR - smite pouze prehazovat prvky
 // v poli, ktere funkce dostane jako parametr.
 
-function obratPole2(texty : string[]) {
-    return []; // Nahradit skutecnym vysledkem
+function obratPole2(texty : string[]) : string[] {
+
+    let index2 : number = texty.length - 1
+    let pomocna2 : number = Math.floor((texty.length / 2))
+
+
+    for ( let index : number = 0; index < pomocna2; index++) {
+        
+        let pomocna : string =  texty[index]
+        texty[index] = texty[index2]
+        texty[index2] = pomocna
+        index--
+    }
+    
+    
+
+    
+    //let index : number = 0
+    //let index2 : number = texty.length
+    //let pomocna : string = ""
+    //let pomocna2 : string = ""
+
+    //for(index = 0; index < Math.floor(texty.length / 2); index ++ ){
+    //    pomocna = texty[index]
+    //pomocna2 = texty[index2]
+    //texty.push(pomocna2)
+    //texty.unshift(pomocna)
+    //index2 --
+    
+    
+    //for(index = 0; index < Math.floor((texty.length)/ 2);index++ ) {
+    //  for(index2 = texty.length; index < Math.floor((texty.length)/ 2); index2--){
+    //      pomocna = texty[index]
+    //      pomocna2 = texty[index2]
+            //texty[index] = pomocna2
+            //texty[index2] = pomocna
+    //  }
+    //}
+    return texty; // Nahradit skutecnym vysledkem
 }
+
+//testObratPole2()
+// test hotov, vysledek : funkcni
+
+
 
 function testObratPole2() {
 // Testovaci data pro overeni, ze se pole obraci spravne.
@@ -39,6 +96,7 @@ function testObratPole2() {
     console.log(pole);
 
     pole = ["alfa", "beta", "epsilon", "gama", "delta"];
+    obratPole2(pole);
     console.log(pole);
 
     pole = ["jedinacek"];
@@ -64,8 +122,18 @@ function testObratPole2() {
  * @returns odstranene texty; texty odstranene ze zacatku puvodniho "texty" museji byt na zacatku vysledku. 
  */
 function vezmiAPridej(texty : string[], zeZacatku : number, zKonce : number, pridejNaZacatek: string[], pridejNaKonec: string[]) : string[] {
-    return []; // NAHRADIT skutecnym vysledkem !
+    //let pomocna : number = texty.length - zKonce - 1
+    //texty[zeZacatku] = pridejNaZacatek[0]
+   // texty[pomocna] = pridejNaKonec[0]
+    
+    let splice1 : string[] = texty.splice(0,zeZacatku,...pridejNaZacatek)
+    let splice2 : string[] = texty.splice(texty.length - zKonce,zKonce,...pridejNaKonec)
+    return texty; // NAHRADIT skutecnym vysledkem !
 }
+
+testVezmiApridej()
+//
+
 
 function testVezmiApridej() {
     let pole : string[] = [ "pasla", "ovecky", "v", "zelenem", "hajecku"];
@@ -105,9 +173,23 @@ function testVezmiApridej() {
  * @returns odstranene prvky.
  */
 function vymenKusPole(vstup : string[], odstranitOd: string, smazatPo: string, novePrvky: string[]) : string[] {
-    return []; // NAHRADIT skutecnym vysledkem
-}
+    
+    let odstranitPo : string = smazatPo
+    
+    let odstranitod : number = vstup.indexOf(odstranitOd)
+    let odstranitpo : number = vstup.indexOf(odstranitPo)
+    if(odstranitod || odstranitpo === -1) {
+        return []
+    }else{
+        let splice : string[] = vstup.splice(odstranitod, odstranitpo,...novePrvky)
+        let vystup : string[] = vstup
 
+        return vystup; // NAHRADIT skutecnym vysledkem
+    }
+}
+//kde je tento prvek : indexof (chekmark)
+//kdyz -1 z indexof : chyba a kdyz hledani neceho co neni : chyba (chekmark)
+//vyresit to se string[] co je podtrhlý (nevím)
 function testVymenKusPole() {
     let pole : string[];
     let odstraneno : string[];

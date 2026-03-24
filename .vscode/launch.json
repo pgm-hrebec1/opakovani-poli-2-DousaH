@@ -13,6 +13,7 @@
             "outFiles": ["${workspaceFolder}/out/**/*.js"],
             "preLaunchTask": "tsc: build - tsconfig.json",
             "console": "integratedTerminal",
+            "runtimeExecutable": "/usr/local/bin/node",
             "sourceMaps": true,
             "showAsyncStacks": true,
         },
